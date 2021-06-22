@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { AuthContext } from '../App'
+import { AuthContext } from '../contexts/AuthContext'
 
 import logoImg from '../assets/images/logo.svg'
 import googleIcon from '../assets/images/google-icon.svg'
