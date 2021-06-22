@@ -1,6 +1,12 @@
-function App() {
+import Home from "./pages/Home"
+import GlobalStyle from "./styles/global";
+
+const App = () => {
   return (
-    <h1>LetAsk</h1>
+    <>
+    <GlobalStyle />
+    <Home />
+    </>
   );
 }
 
