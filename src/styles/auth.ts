@@ -69,6 +69,27 @@ export const Form = styled.form`
     width: 100%;
   }
 `
+export const CreateRoomButton = styled.button`
+  margin-top: 4rem;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #ea4335;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  transition: filter 0.2s;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  &:hover{
+    filter: brightness(0.9);
+  }
+`
 
 export const Separator = styled.div`
   font-size: 0.875rem;
@@ -94,24 +115,3 @@ export const Separator = styled.div`
   }
 `
 
-export const CreateRoomButton = styled.button`
-  margin-top: 4rem;
-  height: 50px;
-  border-radius: 8px;
-  font-weight: 500;
-  background: #ea4335;
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  transition: filter 0.2s;
-
-  img {
-    margin-right: 0.5rem;
-  }
-
-  &:hover{
-    filter: brightness(0.9);
-  }
-`

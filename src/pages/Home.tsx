@@ -2,6 +2,8 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIcon from '../assets/images/google-icon.svg'
 
+import Button from '../components/Button'
+
 import { 
   Container, 
   Aside, 
@@ -36,9 +38,9 @@ const Home = () => {
           type="text"
           placeholder="Digite o código da sala" 
           />
-          <button type="submit">
+          <Button  type="submit">
             Entrar na sala
-          </button>
+          </Button>
         </Form>
       </Content>
     </Main>
