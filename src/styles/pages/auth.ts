@@ -25,6 +25,22 @@ export const Content = styled.div`
   >img {
     align-items: center;
   }
+
+  h2{
+    font-size: 24px;
+    margin: 64px 0 24px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  >p {
+    font-size: 0.875rem;
+    color: #737380;
+    margin-top: 1rem;
+
+    a {
+      color: #E559F9;
+    }
+  }
 `
 
 export const Form = styled.form`
