@@ -1,11 +1,15 @@
 import logoImg from "../assets/images/logo.svg";
 
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
+
 import Aside from "../components/Aside";
 
 import { Container, Main, Content, Form } from "../styles/pages/auth";
 
+
 const NewRoom = () => {
+  
   return (
     <Container>
       <Aside />
@@ -19,7 +23,7 @@ const NewRoom = () => {
           </Form>
           <p>
             Quer entrar em uma sala já existente?
-            <a href="#">Clique aqui</a>
+            <Link to="/"> Clique aqui</Link>
           </p>
         </Content>
       </Main>
