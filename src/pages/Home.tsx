@@ -12,7 +12,7 @@ import {
   Form, 
   Separator,
   CreateRoomButton 
-} from '../styles/auth'
+} from '../styles/pages/auth'
 
 const Home = () => {
   return (
