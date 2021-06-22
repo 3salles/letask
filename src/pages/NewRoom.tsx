@@ -1,15 +1,19 @@
 import logoImg from "../assets/images/logo.svg";
 
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../hooks/useAuth";
+
 import Aside from "../components/Aside";
+import Button from "../components/Button";
 
 import { Container, Main, Content, Form } from "../styles/pages/auth";
 
 
+
 const NewRoom = () => {
-  
+  const { user } = useAuth();
+
   return (
     <Container>
       <Aside />
