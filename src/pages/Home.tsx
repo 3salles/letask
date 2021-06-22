@@ -1,30 +1,22 @@
-import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIcon from '../assets/images/google-icon.svg'
 
 import Button from '../components/Button'
+import Aside from '../components/Aside'
 
 import { 
   Container, 
-  Aside, 
   Main, 
   Content, 
   Form, 
   Separator,
   CreateRoomButton 
-} from '../styles/auth'
+} from '../styles/pages/auth'
 
 const Home = () => {
   return (
     <Container>
-    <Aside>
-      <img 
-      src={illustrationImg} 
-      alt="Ilustração simbolizando perguntas e respostas" 
-      />
-      <strong>Crie salas Q&amp;A ao-vivo</strong>
-      <p>Tire as dúvidas da sua audiência em tempo-real</p>
-    </Aside>
+    <Aside />
     <Main>
       <Content>
         <img src={logoImg} alt="Letmeask" />

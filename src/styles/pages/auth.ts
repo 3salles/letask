@@ -5,32 +5,6 @@ export const Container = styled.section`
   align-items: center;
   height: 100vh;
 `
-export const Aside = styled.aside`
-  flex: 7;
-  background: var(--soft-violet);
-  color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 7.5rem 5rem;
-
-  img {
-    max-width: 320px;
-  }
-
-  strong {
-    font: 700 2.25rem 'Poppins', sans-serif;
-    line-height: 2.625rem;
-    margin-top: 1rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    margin-top: 1rem;
-    color: var(--very-light-gray-white);
-  }
-`
 
 export const Main = styled.main`
   flex: 8;
@@ -50,6 +24,22 @@ export const Content = styled.div`
 
   >img {
     align-items: center;
+  }
+
+  h2{
+    font-size: 24px;
+    margin: 64px 0 24px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  >p {
+    font-size: 0.875rem;
+    color: #737380;
+    margin-top: 1rem;
+
+    a {
+      color: #E559F9;
+    }
   }
 `
 
