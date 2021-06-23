@@ -1,7 +1,9 @@
 import { FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 import { useAuth } from '../hooks/useAuth'
+import { database } from '../services/firebase'
 
 import logoImg from '../assets/images/logo.svg'
 import googleIcon from '../assets/images/google-icon.svg'
@@ -18,11 +20,8 @@ import {
   Separator,
   CreateRoomButton 
 } from '../styles/pages/auth'
-import { database } from '../services/firebase'
 
-
-
-
+const roomError = () => toast.error('Sala não existe!');
 
 const Home = () => {
   const history = useHistory();
@@ -44,8 +43,7 @@ const Home = () => {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if(!roomRef.exists()){
-      // TODO: Create a toast or modal Message.
-      alert('Room does not exists.'); 
+      roomError();
       return;
     }
 
@@ -53,6 +51,7 @@ const Home = () => {
   }
 
   return (
+    <>
     <Container>
     <Aside />
     <Main>
@@ -77,6 +76,8 @@ const Home = () => {
       </Content>
     </Main>
     </Container>
+    <Toaster />
+    </>
   )
 }
 
