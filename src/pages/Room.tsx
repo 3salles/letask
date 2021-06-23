@@ -33,8 +33,9 @@ const Room = () => {
     if (!user) {
       throw new Error('You must be logged in');
       // TODO: Add toast
+      
     }
-
+    
     const question = {
       content: newQuestion,
       author: {
