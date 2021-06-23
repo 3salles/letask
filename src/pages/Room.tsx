@@ -13,6 +13,7 @@ import {
   RoomTitle,
   Textarea,
   FormFooter,
+  UserInfo,
 } from "../styles/pages/room";
 
 const Room = () => {
@@ -45,6 +46,8 @@ const Room = () => {
     }
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
+
+    setNewQuestion('');
   }
 
   return (
@@ -63,10 +66,17 @@ const Room = () => {
             value={newQuestion}
           />
           <FormFooter>
-            <span>
+            {user ? (
+              <UserInfo>
+                <img src={user.avatar} alt={user.name} />
+                <span>{user.name}</span>
+              </UserInfo>
+            ) : (
+              <span>
               Para enviar uma pergunta,
               <button>faça seu login</button>.
             </span>
+            )}
             <Button type="submit" disabled={!user || !newQuestion}>
               Enviar pergunta
             </Button>

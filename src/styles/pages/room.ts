@@ -43,7 +43,7 @@ export const FormFooter = styled.div`
   align-items: center;
   margin-top: 1rem;
 
-  span {
+  >span {
     font-size: 0.875rem;
     color: var(--dark-grayish-blue);
     font-weight: 500;
@@ -56,5 +56,23 @@ export const FormFooter = styled.div`
       font-size: 0.875rem;
       font-weight: 500;
     }
+  }
+`
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  span{
+    margin-left: 0.5rem;
+    color: var(--very-dark-blue-black);
+    font-weight: 500;
+    font-size: 14px;
   }
 `
