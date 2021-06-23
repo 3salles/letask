@@ -34,7 +34,7 @@ export const Content = styled.div`
 
   >p {
     font-size: 0.875rem;
-    color: #737380;
+    color: var(--dark-grayish-blue);
     margin-top: 1rem;
 
     a {

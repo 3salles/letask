@@ -1,27 +1,29 @@
 import Button from "../components/Button";
 import Header from "../components/Header";
 
+import { Container, RoomTitle, Textarea, FormFooter } from '../styles/pages/room'
+
 const Room = () => {
   return (
     <>
       <Header />
-      <main>
-        <div>
+      <Container>
+        <RoomTitle>
           <h1>Sala React</h1>
           <span>4 perguntas</span>
-        </div>
+        </RoomTitle>
 
         <form>
-          <textarea placeholder="O que você quer perguntar?" />
-          <div>
+          <Textarea placeholder="O que você quer perguntar?" />
+          <FormFooter>
             <span>
-              Para enviar uma pergunta,
+              Para enviar uma pergunta, 
               <button>faça seu login</button>.
-              <Button type="submit">Enviar pergunta</Button>
             </span>
-          </div>
+            <Button type="submit">Enviar pergunta</Button>
+          </FormFooter>
         </form>
-      </main>
+      </Container>
     </>
   );
 };
