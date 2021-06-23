@@ -9,7 +9,7 @@ const Header = () => {
     <Container>
       <Content>
         <img src={logoImg} alt="Logo Letmeask" />
-        <RoomCode />
+        <RoomCode code="2fsfsdfsd"/>
       </Content>
     </Container>
   );
