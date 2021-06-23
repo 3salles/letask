@@ -1,12 +1,19 @@
+import { useParams } from "react-router-dom";
+
 import Button from "../components/Button";
 import Header from "../components/Header";
 
+import { RoomParams } from "../components/Header"
+
 import { Container, RoomTitle, Textarea, FormFooter } from '../styles/pages/room'
 
+
 const Room = () => {
+  const params = useParams<RoomParams>();
+
   return (
     <>
-      <Header />
+      <Header id={params.id} />
       <Container>
         <RoomTitle>
           <h1>Sala React</h1>

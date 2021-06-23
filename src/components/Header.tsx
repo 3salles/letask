@@ -4,12 +4,17 @@ import RoomCode from "./RoomCode";
 
 import { Container, Content } from '../styles/components/Header'
 
-const Header = () => {
+export interface RoomParams {
+  id: string;
+}
+
+const Header = ({ id }: RoomParams) => {
+  
   return (
     <Container>
       <Content>
         <img src={logoImg} alt="Logo Letmeask" />
-        <RoomCode code="2fsfsdfsd"/>
+        <RoomCode code={id} />
       </Content>
     </Container>
   );

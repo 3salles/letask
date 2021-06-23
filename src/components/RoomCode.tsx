@@ -10,7 +10,6 @@ const RoomCode = ({ code }: RoomCodeProps) => {
   function copyRoomCodeToClipboard(){
     navigator.clipboard.writeText(code)
     // TODO: Add toast!
-    alert('Copiado!')
   }
 
   return (
