@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
@@ -14,14 +14,14 @@ import { Container, Main, Content, Form } from "../styles/pages/auth";
 
 const NewRoom = () => {
   const { user } = useAuth();
+  const history = useHistory();
+
   const [newRoom, setNewRoom] = useState("");
-  const [disable, setDisable] = useState(false);
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
 
     if (newRoom.trim() === ''){
-      // setDisable(true);
       return
     }
 
@@ -31,6 +31,8 @@ const NewRoom = () => {
       title: newRoom,
       authorId: user?.id,
     })
+
+    history.push(`/rooms/${firebaseRoom.key}`);
   }
 
   return (
@@ -47,7 +49,7 @@ const NewRoom = () => {
               onChange={(event) => setNewRoom(event.target.value)}
               value={newRoom}
             />
-            <Button type="submit" disabled={disable}>Criar a sala</Button>
+            <Button type="submit" disabled={!newRoom}>Criar a sala</Button>
           </Form>
           <p>
             Quer entrar em uma sala já existente?
