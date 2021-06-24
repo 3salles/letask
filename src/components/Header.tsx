@@ -1,8 +1,9 @@
 import logoImg from "../assets/images/logo.svg";
 
 import RoomCode from "./RoomCode";
+import Button from "./Button";
 
-import { Container, Content } from '../styles/components/Header'
+import { Container, Content, ButtonsSection } from '../styles/components/Header'
 
 export interface RoomParams {
   id: string;
@@ -14,7 +15,10 @@ const Header = ({ id }: RoomParams) => {
     <Container>
       <Content>
         <img src={logoImg} alt="Logo Letmeask" />
+        <ButtonsSection>
         <RoomCode code={id} />
+        <Button>Encerrar sala</Button>
+        </ButtonsSection>
       </Content>
     </Container>
   );
