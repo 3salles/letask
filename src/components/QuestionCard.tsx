@@ -1,4 +1,4 @@
-import { Container, Footer, UserInfo } from '../styles/components/Question'
+import { Container, Footer, UserInfo } from '../styles/components/QuestionCard'
 
 interface QuestionProps {
   content: string;
@@ -8,7 +8,7 @@ interface QuestionProps {
   }
 }
 
-const Question = ({content, author}: QuestionProps) => {
+const QuestionCard = ({content, author}: QuestionProps) => {
   return(
     <Container>
       <p>{content}</p>
@@ -23,4 +23,4 @@ const Question = ({content, author}: QuestionProps) => {
   )
 }
 
-export default Question;
+export default QuestionCard;
