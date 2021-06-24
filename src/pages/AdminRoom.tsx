@@ -2,14 +2,15 @@ import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
-import Button from "../components/Button";
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
-import { Question } from "../hooks/UseRoom";
+import { RoomParams } from '../models/index'
 
+import { Question } from "../hooks/UseRoom";
 import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/UseRoom";
+
 import { database } from "../services/firebase";
 
 import {
@@ -19,10 +20,7 @@ import {
 } from "../styles/pages/room";
 
 
-// TODO: Move to models folder
-interface RoomParams {
-  id: string;
-}
+
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
