@@ -142,6 +142,7 @@ const Room = () => {
           {questions?.map((question) => {
             return (
               <QuestionCard
+                key={question.id}
                 content={question.content}
                 author={question.author}
               />
