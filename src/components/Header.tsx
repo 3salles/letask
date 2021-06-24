@@ -5,11 +5,12 @@ import Button from "./Button";
 
 import { Container, Content, ButtonsSection } from '../styles/components/Header'
 
-export interface RoomParams {
+interface HeaderProps {
   id: string;
+  isAdmin?: boolean;
 }
 
-const Header = ({ id }: RoomParams) => {
+const Header = ({ id, isAdmin }: HeaderProps) => {
   
   return (
     <Container>
@@ -17,7 +18,7 @@ const Header = ({ id }: RoomParams) => {
         <img src={logoImg} alt="Logo Letmeask" />
         <ButtonsSection>
         <RoomCode code={id} />
-        <Button>Encerrar sala</Button>
+        {isAdmin && <Button isOutlined >Encerrar sala</Button>}
         </ButtonsSection>
       </Content>
     </Container>

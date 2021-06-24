@@ -6,7 +6,6 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
-import { RoomParams } from "../components/Header";
 import { Question } from "../hooks/UseRoom";
 
 import { useAuth } from "../hooks/useAuth";
@@ -16,13 +15,14 @@ import { database } from "../services/firebase";
 import {
   Container,
   RoomTitle,
-  Textarea,
-  FormFooter,
-  UserInfo,
   QuestionList,
 } from "../styles/pages/room";
 
 
+// TODO: Move to models folder
+interface RoomParams {
+  id: string;
+}
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
@@ -73,7 +73,7 @@ const AdminRoom = () => {
 
   return (
     <>
-      <Header id={roomId} />
+      <Header id={roomId} isAdmin/>
       <Container>
         <RoomTitle>
           <h1>Sala {title}</h1>

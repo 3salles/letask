@@ -6,7 +6,6 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
-import { RoomParams } from "../components/Header";
 import { Question } from "../hooks/UseRoom";
 
 import { useAuth } from "../hooks/useAuth";
@@ -22,7 +21,9 @@ import {
   QuestionList,
 } from "../styles/pages/room";
 
-
+interface RoomParams {
+  id: string;
+}
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
