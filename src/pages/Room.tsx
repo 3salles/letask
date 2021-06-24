@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -7,8 +7,10 @@ import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
 import { RoomParams } from "../components/Header";
+import { Question } from "../hooks/UseRoom";
+
 import { useAuth } from "../hooks/useAuth";
-import useRoom from "../hooks/UseRoom";
+import { useRoom } from "../hooks/UseRoom";
 import { database } from "../services/firebase";
 
 import {
@@ -30,6 +32,17 @@ const Room = () => {
   const roomId = params.id;
   const { user } = useAuth();
   const {title, questions} = useRoom(roomId);
+
+  const checkPlural = (questions: Question[]) => {
+    const questionSize = questions.length;
+    if (questionSize > 0) {
+      if (questionSize === 1 ){
+        return <span>{questions.length} pergunta</span>
+      } else {
+        return <span>{questions.length} perguntas</span>
+      }
+    } 
+  }
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -64,7 +77,7 @@ const Room = () => {
       <Container>
         <RoomTitle>
           <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          {checkPlural(questions)}
         </RoomTitle>
 
         <form onSubmit={handleSendQuestion}>

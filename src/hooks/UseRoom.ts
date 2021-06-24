@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { database } from '../services/firebase';
 
-interface Question {
+export interface Question {
   id: string;
   author: {
     name: string;
@@ -27,7 +27,7 @@ type FirebaseQuestions = Record<
   }
 >;
 
-const useRoom = (roomId: string) => {
+export const useRoom = (roomId: string) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [title, setTitle] = useState("");
 
@@ -57,5 +57,3 @@ const useRoom = (roomId: string) => {
 
   return { questions, title }
 }
-
-export default useRoom;
