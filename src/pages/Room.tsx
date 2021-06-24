@@ -8,6 +8,7 @@ import QuestionCard from "../components/QuestionCard";
 
 import { RoomParams } from "../components/Header";
 import { useAuth } from "../hooks/useAuth";
+import useRoom from "../hooks/UseRoom";
 import { database } from "../services/firebase";
 
 import {
@@ -19,65 +20,16 @@ import {
   QuestionList,
 } from "../styles/pages/room";
 
-type FirebaseQuestions = Record<
-  string,
-  {
-    author: {
-      name: string;
-      avatar: string;
-    };
-    content: string;
-    isAnswered: boolean;
-    isHighlighted: boolean;
-  }
->;
 
-interface Question {
-  id: string;
-  author: {
-    name: string;
-    avatar: string;
-  };
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
 const Room = () => {
   const [newQuestion, setNewQuestion] = useState("");
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [title, setTitle] = useState("");
-
-  const { user } = useAuth();
   const params = useParams<RoomParams>();
-
   const roomId = params.id;
-
-  useEffect(() => {
-    const roomRef = database.ref(`/rooms/${roomId}`);
-
-    roomRef.on("value", (room) => {
-      const databaseRoom = room.val();
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
-
-      const parseQuestions = Object.entries(firebaseQuestions).map(
-        ([key, value]) => {
-          return {
-            id: key,
-            content: value.content,
-            author: value.author,
-            isHighlighted: value.isHighlighted,
-            isAnswered: value.isAnswered,
-          };
-        }
-      );
-
-      setTitle(databaseRoom.title);
-      setQuestions(parseQuestions);
-    });
-  }, [roomId]);
+  const { user } = useAuth();
+  const {title, questions} = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
