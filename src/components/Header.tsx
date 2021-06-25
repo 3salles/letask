@@ -25,7 +25,7 @@ const Header = ({ id, isAdmin }: HeaderProps) => {
   
   async function handleEndRoom() {
     await database.ref(`/rooms/${roomId}`).update({
-      endedAt: new Date(),
+      closedAt: new Date(),
     });
 
     history.push('/');

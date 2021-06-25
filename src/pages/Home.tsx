@@ -22,6 +22,8 @@ import {
 } from '../styles/pages/auth'
 
 const roomError = () => toast.error('Sala não existe!');
+const closedRoom = () => toast.error('Sala encerrada!')
+
 
 const Home = () => {
   const history = useHistory();
@@ -42,13 +44,13 @@ const Home = () => {
 
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-    if(!roomRef.exists()){
+    if(!roomRef.exists() ){
       roomError();
       return;
     }
 
-    if (roomRef.exists()) {
-      alert('Sala não existe!')
+    if (roomRef.val().closedAt) {
+      closedRoom();
       return
     }
 
