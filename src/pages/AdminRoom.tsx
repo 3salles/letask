@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
+import Modal from "../components/Modal";
 
 import { RoomParams } from "../models/index";
 
@@ -36,9 +37,9 @@ const AdminRoom = () => {
   };
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que deseja excluir esta pergunta?")) {
-      await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove();
-    }
+    // if (window.confirm("Tem certeza que deseja excluir esta pergunta?")) {
+    //   await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove();
+    // }
   }
 
   return (
@@ -57,13 +58,14 @@ const AdminRoom = () => {
                 content={question.content}
                 author={question.author}
               >
-                <DeleteButton
+                {/* <DeleteButton
                   type="button"
                   title="Remover pergunta"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
                   <Delete />
-                </DeleteButton>
+                </DeleteButton> */}
+                <Modal />
               </QuestionCard>
             );
           })}
