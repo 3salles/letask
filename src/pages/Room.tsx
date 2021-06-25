@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
-import { RoomParams } from '../models/index'
+import { RoomParams } from "../models/index";
 
 import { Question } from "../hooks/UseRoom";
 import { useAuth } from "../hooks/useAuth";
@@ -21,8 +21,9 @@ import {
   FormFooter,
   UserInfo,
   QuestionList,
+  Like,
+  LikeButton,
 } from "../styles/pages/room";
-
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
@@ -31,18 +32,18 @@ const Room = () => {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { user } = useAuth();
-  const {title, questions} = useRoom(roomId);
+  const { title, questions } = useRoom(roomId);
 
   const checkPlural = (questions: Question[]) => {
     const questionSize = questions.length;
     if (questionSize > 0) {
-      if (questionSize === 1 ){
-        return <span>{questions.length} pergunta</span>
+      if (questionSize === 1) {
+        return <span>{questions.length} pergunta</span>;
       } else {
-        return <span>{questions.length} perguntas</span>
+        return <span>{questions.length} perguntas</span>;
       }
-    } 
-  }
+    }
+  };
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -69,6 +70,16 @@ const Room = () => {
     await database.ref(`rooms/${roomId}/questions`).push(question);
 
     setNewQuestion("");
+  }
+
+  async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
+    if(likeId) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove();
+      } else {
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+          authorId: user?.id,
+      });
+    }
   }
 
   return (
@@ -110,7 +121,16 @@ const Room = () => {
                 key={question.id}
                 content={question.content}
                 author={question.author}
-              />
+              >
+                <LikeButton
+                  type="submit"
+                  aria-label="Marcar como gostei"
+                  onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                >
+                  {question.likeCount > 0 && <span>{question.likeCount}</span>}
+                  <Like hasLiked={!!question.likeId} />
+                </LikeButton>
+              </QuestionCard>
             );
           })}
         </QuestionList>

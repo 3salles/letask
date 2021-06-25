@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+import {ReactComponent as LikeSvg} from "../../assets/images/like.svg"
+
+interface LikeButtonProps {
+  hasLiked: boolean;
+}
 
 export const Container = styled.main`
   max-width: 50rem;
@@ -78,4 +84,31 @@ export const UserInfo = styled.div`
 `
 export const QuestionList = styled.div`
   margin: 2rem 0;
+`
+
+export const LikeButton = styled.button`
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  color: var(--soft-violet);
+  gap: 0.5rem;
+
+  &:hover{
+    color: var(--soft-violet);
+  }
+`
+
+export const Like = styled(LikeSvg)<LikeButtonProps>`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  ${({hasLiked}) => hasLiked && css`
+    fill: var(--soft-violet);
+    stroke: var(--white);
+  ` }
+
+  &:hover{
+    stroke: ${({hasLiked}) => hasLiked ? '#FFFFFF' : '#835AFD'};
+  }
 `

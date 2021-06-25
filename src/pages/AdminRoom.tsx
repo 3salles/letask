@@ -19,9 +19,6 @@ import {
   QuestionList,
 } from "../styles/pages/room";
 
-
-
-
 const userNotLogged = () => toast.error("Você precisa fazer log in");
 
 const AdminRoom = () => {

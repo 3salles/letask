@@ -1,4 +1,6 @@
-import { Container, Footer, UserInfo } from '../styles/components/QuestionCard'
+import { ReactNode } from 'react';
+
+import { Container, Footer, UserInfo} from '../styles/components/QuestionCard'
 
 interface QuestionProps {
   content: string;
@@ -6,9 +8,10 @@ interface QuestionProps {
     name: string;
     avatar: string;
   }
+  children?: ReactNode;
 }
 
-const QuestionCard = ({content, author}: QuestionProps) => {
+const QuestionCard = ({content, author, children}: QuestionProps) => {
   return(
     <Container>
       <p>{content}</p>
@@ -17,7 +20,9 @@ const QuestionCard = ({content, author}: QuestionProps) => {
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </UserInfo>
-        <div></div>
+        <div>
+          {children}
+        </div>
       </Footer>
     </Container>
   )
