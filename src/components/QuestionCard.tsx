@@ -8,7 +8,7 @@ interface QuestionProps {
     name: string;
     avatar: string;
   }
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const QuestionCard = ({content, author, children}: QuestionProps) => {

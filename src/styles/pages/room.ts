@@ -1,6 +1,7 @@
 import styled, {css} from "styled-components";
 
 import {ReactComponent as LikeSvg} from "../../assets/images/like.svg"
+import {ReactComponent as DeleteSvg} from "../../assets/images/delete.svg"
 
 interface LikeButtonProps {
   hasLiked: boolean;
@@ -99,6 +100,11 @@ export const LikeButton = styled.button`
   }
 `
 
+export const DeleteButton = styled.button`
+  border: 0;
+  background: transparent;
+`
+
 export const Like = styled(LikeSvg)<LikeButtonProps>`
   stroke: var(--dark-grayish-blue);
   fill: none;
@@ -110,5 +116,14 @@ export const Like = styled(LikeSvg)<LikeButtonProps>`
 
   &:hover{
     stroke: ${({hasLiked}) => hasLiked ? '#FFFFFF' : '#835AFD'};
+  }
+`
+
+export const Delete = styled(DeleteSvg)`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  &:hover{
+    stroke: var(--bright-red);
   }
 `
