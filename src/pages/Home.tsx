@@ -47,6 +47,11 @@ const Home = () => {
       return;
     }
 
+    if (roomRef.exists()) {
+      alert('Sala não existe!')
+      return
+    }
+
     history.push(`/rooms/${roomCode}`);
   }
 
