@@ -12,6 +12,7 @@ const  GlobalStyle = createGlobalStyle`
     --light-grayish-blue: #EAF1FE;
     --very-light-gray: #E2E2E2;
     --very-light-gray-white: #F8F8F8;
+    --very-pale-violet: #F4F0FF;
     --very-lightest-gray-white: #FEFEFE;
     --white: #FFFFFF; 
   }

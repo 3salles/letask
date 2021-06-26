@@ -16,8 +16,11 @@ import {
   Container,
   RoomTitle,
   QuestionList,
-  DeleteButton,
+  Buttons,
   Delete,
+  Check,
+  Answer,
+  ButtonsSection,
 } from "../styles/pages/room";
 
 const AdminRoom = () => {
@@ -37,11 +40,17 @@ const AdminRoom = () => {
     }
   };
 
-  // async function handleDeleteQuestion(questionId: string) {
-  //   if (window.confirm("Tem certeza que deseja excluir esta pergunta?")) {
-  //     await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove();
-  //   }
-  // }
+  async function handleCheckQuestionAnswered(questionId: string) {
+    await database.ref(`/rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    });
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`/rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true,
+    });
+  }
 
   return (
     <>
@@ -59,14 +68,38 @@ const AdminRoom = () => {
                   key={question.id}
                   content={question.content}
                   author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighlighted={question.isHighlighted}
                 >
-                  <DeleteButton
-                    type="button"
-                    title="Remover pergunta"
-                    onClick={() => setIsOpen(true)}
-                  >
-                    <Delete />
-                  </DeleteButton>
+                  <ButtonsSection>
+                    {!question.isAnswered && (
+                      <>
+                        <Buttons
+                          type="button"
+                          title="Marcar como respondida"
+                          onClick={() =>
+                            handleCheckQuestionAnswered(question.id)
+                          }
+                        >
+                          <Check />
+                        </Buttons>
+                        <Buttons
+                          type="button"
+                          title="Destacar pergunta"
+                          onClick={() => handleHighlightQuestion(question.id)}
+                        >
+                          <Answer />
+                        </Buttons>
+                      </>
+                    )}
+                    <Buttons
+                      type="button"
+                      title="Remover pergunta"
+                      onClick={() => setIsOpen(true)}
+                    >
+                      <Delete />
+                    </Buttons>
+                  </ButtonsSection>
                 </QuestionCard>
                 <DeleteQuestionModal
                   questionId={question.id}

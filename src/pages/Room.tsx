@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 
-import { RoomParams } from "../models/index";
+import { RoomParams } from "../models/index"
 
 import { Question } from "../hooks/UseRoom";
 import { useAuth } from "../hooks/useAuth";
@@ -121,6 +121,8 @@ const Room = () => {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
                 <LikeButton
                   type="submit"

@@ -9,11 +9,19 @@ interface QuestionProps {
     avatar: string;
   }
   children: ReactNode;
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
 }
 
-const QuestionCard = ({content, author, children}: QuestionProps) => {
+const QuestionCard = ({
+  content, 
+  author, 
+  children,
+  isAnswered = false,
+  isHighlighted = false,
+}: QuestionProps) => {
   return(
-    <Container>
+    <Container isAnswered={isAnswered} isHighlighted={isHighlighted}>
       <p>{content}</p>
       <Footer>
         <UserInfo>

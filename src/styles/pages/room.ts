@@ -2,6 +2,8 @@ import styled, {css} from "styled-components";
 
 import {ReactComponent as LikeSvg} from "../../assets/images/like.svg"
 import {ReactComponent as DeleteSvg} from "../../assets/images/delete.svg"
+import {ReactComponent as CheckSvg} from "../../assets/images/check.svg"
+import {ReactComponent as AnswerSvg} from "../../assets/images/answer.svg"
 
 interface LikeButtonProps {
   hasLiked: boolean;
@@ -87,6 +89,11 @@ export const QuestionList = styled.div`
   margin: 2rem 0;
 `
 
+export const ButtonsSection = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
 export const LikeButton = styled.button`
   border: 0;
   background: transparent;
@@ -100,7 +107,7 @@ export const LikeButton = styled.button`
   }
 `
 
-export const DeleteButton = styled.button`
+export const Buttons = styled.button`
   border: 0;
   background: transparent;
 `
@@ -125,5 +132,23 @@ export const Delete = styled(DeleteSvg)`
 
   &:hover{
     stroke: var(--bright-red);
+  }
+`
+
+export const Check = styled(CheckSvg)`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  &:hover{
+    stroke: var(--soft-violet);
+  }
+`
+
+export const Answer = styled(AnswerSvg)`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  &:hover{
+    stroke: var(--soft-violet);
   }
 `
