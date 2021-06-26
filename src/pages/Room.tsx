@@ -98,7 +98,7 @@ const Room = () => {
         <form onSubmit={handleSendQuestion}>
           <Textarea
             placeholder="O que você quer perguntar?"
-            onChange={(event) => setNewQuestion(event.target.value)}
+            onChange={(event: any) => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
           <FormFooter>
@@ -114,7 +114,7 @@ const Room = () => {
               </span>
             )}
             <Button type="submit" disabled={!user || !newQuestion}>
-              Enviar 
+              Enviar
             </Button>
           </FormFooter>
         </form>
