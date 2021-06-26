@@ -23,6 +23,7 @@ import {
   QuestionList,
   Like,
   LikeButton,
+  MobSpan,
 } from "../styles/pages/room";
 
 const userNotLogged = () => toast.error("Você precisa fazer log in");
@@ -37,11 +38,13 @@ const Room = () => {
   const checkPlural = (questions: Question[]) => {
     const questionSize = questions.length;
     if (questionSize > 0) {
+      let text;
       if (questionSize === 1) {
-        return <span>{questions.length} pergunta</span>;
+        text = `${questions.length} pergunta`;
       } else {
-        return <span>{questions.length} perguntas</span>;
+        text = `${questions.length} perguntas`;
       }
+      return text;
     }
   };
 
@@ -88,7 +91,8 @@ const Room = () => {
       <Container>
         <RoomTitle>
           <h1>Sala {title}</h1>
-          {checkPlural(questions)}
+          <span>{checkPlural(questions)}</span>
+          <MobSpan>{questions.length}</MobSpan>
         </RoomTitle>
 
         <form onSubmit={handleSendQuestion}>
