@@ -15,3 +15,14 @@ export const Content = styled.div`
     max-height: 45px;
   }
 `
+
+export const ButtonsSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  
+  >button{
+    height: 40px;
+  }
+`

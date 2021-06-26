@@ -1,13 +1,17 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
-
+import toast, { Toaster } from "react-hot-toast";
 
 import Button from "../components/Button";
 import Header from "../components/Header";
+import QuestionCard from "../components/QuestionCard";
 
-import { RoomParams } from "../components/Header";
+import { RoomParams } from "../models/index";
+
+import { Question } from "../hooks/UseRoom";
 import { useAuth } from "../hooks/useAuth";
+import { useRoom } from "../hooks/UseRoom";
+
 import { database } from "../services/firebase";
 
 import {
@@ -16,75 +20,43 @@ import {
   Textarea,
   FormFooter,
   UserInfo,
+  QuestionList,
+  Like,
+  LikeButton,
 } from "../styles/pages/room";
 
-type FirebaseQuestions = Record<string, {
-  author: {
-    name: string;
-    avatar: string;
-  }
-  content: string,
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}>
-
-interface Question {
-  id: string;
-  author: {
-    name: string;
-    avatar: string;
-  }
-  content: string,
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}
-
-const userNotLogged = () => toast.error('Você precisa fazer log in');
+const userNotLogged = () => toast.error("Você precisa fazer log in");
 
 const Room = () => {
   const [newQuestion, setNewQuestion] = useState("");
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [title, setTitle] = useState('');
-
-  const { user } = useAuth();
   const params = useParams<RoomParams>();
-
   const roomId = params.id;
-  
-  useEffect(()=>{
-    const roomRef = database.ref(`/rooms/${roomId}`);
-    
-    roomRef.on('value', room => {
-      const databaseRoom = room.val();
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
+  const { user } = useAuth();
+  const { title, questions } = useRoom(roomId);
 
-      const parseQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighlighted: value.isHighlighted,
-          isAnswered: value.isAnswered,
-        }
-      });
-
-      setTitle(databaseRoom.title);
-      setQuestions(parseQuestions);
-    })
-  }, [roomId]);
+  const checkPlural = (questions: Question[]) => {
+    const questionSize = questions.length;
+    if (questionSize > 0) {
+      if (questionSize === 1) {
+        return <span>{questions.length} pergunta</span>;
+      } else {
+        return <span>{questions.length} perguntas</span>;
+      }
+    }
+  };
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
-    
-    if (newQuestion.trim() === ''){
+
+    if (newQuestion.trim() === "") {
       return;
     }
 
     if (!user) {
       userNotLogged();
-      throw new Error('You must be logged in');      
+      throw new Error("You must be logged in");
     }
-    
+
     const question = {
       content: newQuestion,
       author: {
@@ -93,11 +65,21 @@ const Room = () => {
       },
       isHighlighted: false,
       isAnswered: false,
-    }
+    };
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
 
-    setNewQuestion('');
+    setNewQuestion("");
+  }
+
+  async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
+    if(likeId) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove();
+      } else {
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+          authorId: user?.id,
+      });
+    }
   }
 
   return (
@@ -106,7 +88,7 @@ const Room = () => {
       <Container>
         <RoomTitle>
           <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          {checkPlural(questions)}
         </RoomTitle>
 
         <form onSubmit={handleSendQuestion}>
@@ -123,15 +105,35 @@ const Room = () => {
               </UserInfo>
             ) : (
               <span>
-              Para enviar uma pergunta,
-              <button>faça seu login</button>.
-            </span>
+                Para enviar uma pergunta,
+                <button>faça seu login</button>.
+              </span>
             )}
             <Button type="submit" disabled={!user || !newQuestion}>
               Enviar pergunta
             </Button>
           </FormFooter>
         </form>
+        <QuestionList>
+          {questions?.map((question) => {
+            return (
+              <QuestionCard
+                key={question.id}
+                content={question.content}
+                author={question.author}
+              >
+                <LikeButton
+                  type="submit"
+                  aria-label="Marcar como gostei"
+                  onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                >
+                  {question.likeCount > 0 && <span>{question.likeCount}</span>}
+                  <Like hasLiked={!!question.likeId} />
+                </LikeButton>
+              </QuestionCard>
+            );
+          })}
+        </QuestionList>
       </Container>
       <Toaster />
     </>

@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+import {ReactComponent as LikeSvg} from "../../assets/images/like.svg"
+import {ReactComponent as DeleteSvg} from "../../assets/images/delete.svg"
+
+interface LikeButtonProps {
+  hasLiked: boolean;
+}
 
 export const Container = styled.main`
   max-width: 50rem;
@@ -32,7 +39,7 @@ export const Textarea = styled.textarea`
   border: 0;
   padding: 1rem;
   border-radius: 8px;
-  background: #FEFEFE;
+  background: var(--very-lightest-gray-white);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   resize: vertical;
   min-height: 130px;
@@ -74,5 +81,49 @@ export const UserInfo = styled.div`
     color: var(--very-dark-blue-black);
     font-weight: 500;
     font-size: 14px;
+  }
+`
+export const QuestionList = styled.div`
+  margin: 2rem 0;
+`
+
+export const LikeButton = styled.button`
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  color: var(--soft-violet);
+  gap: 0.5rem;
+
+  &:hover{
+    color: var(--soft-violet);
+  }
+`
+
+export const DeleteButton = styled.button`
+  border: 0;
+  background: transparent;
+`
+
+export const Like = styled(LikeSvg)<LikeButtonProps>`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  ${({hasLiked}) => hasLiked && css`
+    fill: var(--soft-violet);
+    stroke: var(--white);
+  ` }
+
+  &:hover{
+    stroke: ${({hasLiked}) => hasLiked ? '#FFFFFF' : '#835AFD'};
+  }
+`
+
+export const Delete = styled(DeleteSvg)`
+  stroke: var(--dark-grayish-blue);
+  fill: none;
+
+  &:hover{
+    stroke: var(--bright-red);
   }
 `
