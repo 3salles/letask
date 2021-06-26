@@ -5,7 +5,7 @@ import logoImg from "../assets/images/logo.svg";
 import RoomCode from "./RoomCode";
 import Button from "./Button";
 
-import Modal from "../components/Modal";
+import CloseRoomModal from "../components/CloseRoomModal";
 
 import {
   Container,
@@ -40,7 +40,7 @@ const Header = ({ id, isAdmin }: HeaderProps) => {
           </ButtonsSection>
         </Content>
       </Container>
-      <Modal
+      <CloseRoomModal
         openModal={isOpen}
         setOpenModal={setIsOpen}
       />

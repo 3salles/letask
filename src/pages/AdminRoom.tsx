@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
-
+import DeleteQuestionModal from "../components/DeleteQuestionModal";
 
 import { RoomParams } from "../models/index";
 
@@ -24,7 +24,7 @@ const AdminRoom = () => {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
-  
+  const [isOpen, setIsOpen] = useState(false);
 
   const checkPlural = (questions: Question[]) => {
     const questionSize = questions.length;
@@ -37,11 +37,11 @@ const AdminRoom = () => {
     }
   };
 
-  async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que deseja excluir esta pergunta?")) {
-      await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove();
-    }
-  }
+  // async function handleDeleteQuestion(questionId: string) {
+  //   if (window.confirm("Tem certeza que deseja excluir esta pergunta?")) {
+  //     await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove();
+  //   }
+  // }
 
   return (
     <>
@@ -54,19 +54,26 @@ const AdminRoom = () => {
         <QuestionList>
           {questions?.map((question) => {
             return (
-              <QuestionCard
-                key={question.id}
-                content={question.content}
-                author={question.author}
-              >
-                <DeleteButton
-                  type="button"
-                  title="Remover pergunta"
-                  onClick={() => handleDeleteQuestion(question.id)}
+              <>
+                <QuestionCard
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
                 >
-                  <Delete />
-                </DeleteButton>
-              </QuestionCard>
+                  <DeleteButton
+                    type="button"
+                    title="Remover pergunta"
+                    onClick={() => setIsOpen(true)}
+                  >
+                    <Delete />
+                  </DeleteButton>
+                </QuestionCard>
+                <DeleteQuestionModal
+                  questionId={question.id}
+                  openModal={isOpen}
+                  setOpenModal={setIsOpen}
+                />
+              </>
             );
           })}
         </QuestionList>

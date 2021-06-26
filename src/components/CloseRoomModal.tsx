@@ -19,7 +19,7 @@ interface ModalProps {
   setOpenModal(state: boolean): void;
 }
 
-const Modal = ({openModal, setOpenModal}:ModalProps) => {
+const CloseRoomModal = ({openModal, setOpenModal}:ModalProps) => {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const history = useHistory();
@@ -54,4 +54,4 @@ const Modal = ({openModal, setOpenModal}:ModalProps) => {
   );
 };
 
-export default Modal;
+export default CloseRoomModal;
