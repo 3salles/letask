@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import logoImg from "../assets/images/logo.svg";
+import mobImg from "../assets/images/logo-mob.svg";
 
 import RoomCode from "./RoomCode";
 import Button from "./Button";
@@ -12,6 +13,8 @@ import {
   Container,
   Content,
   ButtonsSection,
+  Logo,
+  MobLogo,
 } from "../styles/components/Header";
 
 interface HeaderProps {
@@ -26,7 +29,8 @@ const Header = ({ id, isAdmin }: HeaderProps) => {
     <>
       <Container>
         <Content>
-          <img src={logoImg} alt="Logo Letmeask" />
+          <Logo src={logoImg} alt="Logo Letmeask" />
+          <MobLogo src={mobImg}  alt="Logo Letmeask" />
           <ButtonsSection>
             <RoomCode code={id} />
             {isAdmin ? (
