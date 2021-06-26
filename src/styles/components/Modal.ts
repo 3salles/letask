@@ -5,7 +5,7 @@ import {ReactComponent as CancelSvg} from "../../assets/images/cancel.svg"
 
 export const Overlay = {
   overlay: {
-    backgroundColor: 'rgba(5, 2, 6, 0.95)'
+    backgroundColor: 'rgba(5, 2, 6, 0.85)'
   }
 }
 
