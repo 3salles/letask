@@ -1,46 +1,149 @@
-# Getting Started with Create React App
+<p align="center">
+  <h3 align="center">LetMeAsk</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="https://img.shields.io/static/v1?label=Version&message=1.0&color=7159c1" alt="Version-0.1" />
+  <img src="https://img.shields.io/badge/status-unfinished-orange" alt="Status-Unfinished "/>
+  <img src="https://img.shields.io/static/v1?label=Lincense&message=MIT&color=0000ff " alt="Lincense" />
+</p>
 
-## Available Scripts
+<p align="center">
+    This site is to create Questions and Answers real time live rooms.
+    <br />
+    <br />
+    <a href="README.md">🇺🇸English</a>
+    ·
+    <a href="README-pt.md">🇧🇷Portuguese</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+## 🗂 Table of Contents
 
-### `yarn start`
+* [About the Project](#book-about-the-project)
+  * [Versions](#bookmark-tabs-versions)
+    * [0.1](#label-0.1)
+  * [Layout](#art-layout)
+  * [Technologies](#computer-technologies)
+  * [Features](#sparkles-features)
+    * [Version 0.1](#label-version-0.1)
+    * [Version 0.5](#label-version-0.5)
+    * [Version 1.0](#label-version-1.0)
+* [Installation](#bricks-installation)
+  * [Prerequisites](#construction-prerequisites)
+  * [Front-end](#lipstick-front-end)
+    * [Installing Dependencies](#construction-installing-dependencies)
+    * [Setting Front-end](#wrench-setting-front-end)
+    * [Running Front-end](#arrow_forward-running-front-end)
+* [License](#page_facing_up-license)
+* [Author](#woman_technologist-author)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :book: About The Project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+LetMeAsk is a site to use in real time lives, where the host can answer questions 
+made by his guests.
 
-### `yarn test`
+You can view the side [here](https://letask-eb0a8.web.app).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### :bookmark_tabs: Versions
 
-### `yarn build`
+#### :label: 0.1
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In version 0.1: it is based on [Rockseat's](https://rocketseat.com.br) project created during Next Level Week #6. 
+The host log in with a Google account and create a room, giving a name. Then, he
+can share the code room. He will see the real time questions and their author. 
+He can highlight, mark as answered and delete questions.
+His guests will enter in the room using the code room, and see the questions made.
+To create a question, the guests must be logged with Goggle account.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### :art: Layout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can access the project's layout in links below:
 
-### `yarn eject`
+* [Desktop](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🚨 You need have a [Figma](https://www.figma.com) account to access the layout.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### :computer: Technologies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+* [React](https://reactjs.org)
+* [Firebase](https://firebase.google.com)
+* [Styled-Components](https://styled-components.com)
+* [Yarn](https://yarnpkg.com)
+* [TypeScript](https://www.typescriptlang.org)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### :sparkles: Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### :label: Version 0.1
+
+  - [x] Remove question confirmation modal 
+  - [x] Close room confirmation modal
+  - [x] Alert room don't exist toast
+  - [x] Alert closed room toast
+#### :label: Version 0.5
+
+  - [] Responsive Layout
+
+#### :label: Version 1.0
+
+  - [] Dark Mode
+
+
+## :bricks: Installation
+
+This project use [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com), you will need them to build its dependencies.
+
+### :construction: Prerequisites
+
+Clone this project repository:
+```bash
+
+$ git clone https://github.com/3salles/letask.git
+
+#Enter in `letask` folder:
+
+$ cd letask
+```
+
+🚨 If you don't have git in your machine, you can install it [here](https://git-scm.com/downloads).
+
+## :lipstick: Front-end
+
+### :construction: Installing Dependencies
+
+In LetMeAsk folder and install depencies by the following command:
+
+```bash
+
+$ yarn install
+
+```
+
+### :wrench: Setting Front-end
+
+🚨 You must create a Firebase account and create a project to catch yours environment variables.
+
+### :arrow_forward: Running Front-end
+
+Run the following command to see the application:
+
+```bash
+$ yarn start
+```
+
+The application will be available on `http://localhost:3000/`.
+
+## :page_facing_up: License
+
+This project uses [MIT]() license.
+
+## :woman_technologist: Author
+<p align="center">
+  <a href="https://github.com/3salles"><img src="https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/3salles" alt="Github" /></a>
+  <a href="https://www.linkedin.com/in/beatriz-salles-b701a31a6/"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/beatriz-salles-b701a31a6" alt="LinkendIn" /></a>
+  <a href="mailto:beatrizsallesss@gmail.com"><img src="https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:beatrizsallesss@gmail.com" alt="Gmail" /></a>
+</p>
+
+<p align="center">Developed with 💜 by Beatriz Salles</p>
