@@ -26,8 +26,9 @@
   * [Layout](#art-layout)
   * [Technologies](#computer-technologies)
   * [Features](#sparkles-features)
-    * [Version 0.5](#label-version-1.0)
-    * [Version 1.0](#label-version-1.5)
+    * [Version 0.1](#label-version-0.1)
+    * [Version 0.5](#label-version-0.5)
+    * [Version 1.0](#label-version-1.0)
 * [Installation](#bricks-installation)
   * [Prerequisites](#construction-prerequisites)
   * [Front-end](#lipstick-front-end)
@@ -48,8 +49,7 @@ You can view the side [here](https://letask-eb0a8.web.app).
 
 #### :label: 0.1
 
-In version 0.1: it is based on [Rockseat's](https://rocketseat.com.br) project 
-created during Next Level Week #6. 
+In version 0.1: it is based on [Rockseat's](https://rocketseat.com.br) project created during Next Level Week #6. 
 The host log in with a Google account and create a room, giving a name. Then, he
 can share the code room. He will see the real time questions and their author. 
 He can highlight, mark as answered and delete questions.
@@ -76,7 +76,13 @@ You can access the project's layout in links below:
 
 ### :sparkles: Features
 
-#### :label: Version 0.2
+#### :label: Version 0.1
+
+  - [x] Remove question confirmation modal 
+  - [x] Close room confirmation modal
+  - [x] Alert room don't exist toast
+  - [x] Alert closed room toast
+#### :label: Version 0.5
 
   - [] Responsive Layout
 
@@ -117,22 +123,21 @@ $ yarn install
 
 ### :wrench: Setting Front-end
 
-🚨 You must create a Firebase account and create a project to catch yours enviromment
-variables.
+🚨 You must create a Firebase account and create a project to catch yours environment variables.
 
 ### :arrow_forward: Running Front-end
 
-Run the following comand to see the application:
+Run the following command to see the application:
 
 ```bash
 $ yarn start
 ```
 
-The application will be avaible on `http://localhost:3000/`.
+The application will be available on `http://localhost:3000/`.
 
 ## :page_facing_up: License
 
-This project uses [MIT]() lincense.
+This project uses [MIT]() license.
 
 ## :woman_technologist: Author
 <p align="center">
