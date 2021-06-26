@@ -58,6 +58,10 @@ export const MobSpan = styled.div`
   color: var(--white);
   font-weight: 500;
   font-size: 0.875rem;
+  
+  @media(min-width: 768px){
+    display: none;
+  }
 `
 
 export const Textarea = styled.textarea`

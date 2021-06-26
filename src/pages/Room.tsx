@@ -114,7 +114,7 @@ const Room = () => {
               </span>
             )}
             <Button type="submit" disabled={!user || !newQuestion}>
-              Enviar pergunta
+              Enviar 
             </Button>
           </FormFooter>
         </form>
