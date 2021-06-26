@@ -1,6 +1,11 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
-export const Container = styled.div`
+interface ContainerProps {
+  isHighlighted: boolean;
+  isAnswered: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background: var(--very-lightest-gray-white);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
@@ -13,6 +18,15 @@ export const Container = styled.div`
   & + div {
     margin-top: 0.5rem;
   }
+
+  ${({isHighlighted, isAnswered}) => isHighlighted && !isAnswered && css`
+    background: var(--very-pale-violet);
+    border: 1px solid var(--soft-violet);
+  `}
+
+  ${({isAnswered}) => isAnswered && css`
+    background: #DBDCDD;
+  `}
 `
 
 export const Footer = styled.footer`
