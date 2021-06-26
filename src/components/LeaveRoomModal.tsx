@@ -40,7 +40,7 @@ const LeaveRoomModal = ({openModal, setOpenModal}:ModalProps) => {
       contentLabel="Leave Room Modal"
     >
       <Cancel />
-      <Title>Encerrar sala</Title>
+      <Title>Sair da sala</Title>
       <Text>Deseja realmente sair da sala?</Text>
       <ButtonsSection>
         <CancelButton onClick={handleCloseModal}>Cancelar</CancelButton>

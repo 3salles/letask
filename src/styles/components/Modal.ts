@@ -16,10 +16,14 @@ export const StyledModal = styled(ReactModal)`
   transform: translate(-50%, -50%);
   background-color: var(--white);
   border-radius: 8px;
-  padding: 32px 60px;
+  padding: 2rem 3.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media(max-width: 768px){
+    padding: 1rem 1.875rem;
+  }
 `;
 
 export const Title = styled.h2`
