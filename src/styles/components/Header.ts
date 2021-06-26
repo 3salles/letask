@@ -11,8 +11,20 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  > img {
-    max-height: 45px;
+
+`
+
+export const Logo = styled.img`
+  max-height: 45px;
+  @media(max-width: 768px){
+    display: none;
+  }
+`
+
+export const MobLogo = styled.img`
+  max-height: 45px;
+  @media(min-width: 768px){
+    display: none;
   }
 `
 

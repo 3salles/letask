@@ -4,6 +4,9 @@ export const Container = styled.section`
   display: flex;
   align-items: center;
   height: 100vh;
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
 `
 
 export const Main = styled.main`
@@ -12,6 +15,9 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media(max-width: 768px){
+    padding: 2rem 0;
+  }
 `
 
 export const Content = styled.div`
@@ -41,6 +47,7 @@ export const Content = styled.div`
       color: #E559F9;
     }
   }
+
 `
 
 export const Form = styled.form`

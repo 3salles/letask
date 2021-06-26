@@ -1,8 +1,8 @@
+import toast, { Toaster } from 'react-hot-toast';
+
 import copyImg from '../assets/images/copy.svg'
 
 import { Button } from "../styles/components/RoomCode"
-
-import toast, { Toaster } from 'react-hot-toast';
 
 interface RoomCodeProps {
   code: string;

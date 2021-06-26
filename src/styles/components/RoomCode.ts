@@ -26,4 +26,10 @@ export const Button = styled.button`
     font-size: 0.875rem;
     font-weight: 500;
   }
+
+  @media(max-width: 768px){
+    span {
+      display: none;
+    }
+  }
 `

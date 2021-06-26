@@ -12,6 +12,10 @@ interface LikeButtonProps {
 export const Container = styled.main`
   max-width: 50rem;
   margin: 0 auto;
+
+  @media(max-width: 768px){
+    padding: 1rem 2rem;
+  }
 `
 
 export const RoomTitle = styled.div`
@@ -21,7 +25,7 @@ export const RoomTitle = styled.div`
 
   h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--very-dark-blue-black);
   }
 
@@ -33,6 +37,30 @@ export const RoomTitle = styled.div`
     color: var(--white);
     font-weight: 500;
     font-size: 0.875rem;
+  }
+
+  @media(max-width: 768px){
+    justify-content: space-between;
+    h1 {
+      font-size: 1.125rem;
+    }
+    > span {
+      display: none;
+    }
+  }
+`
+
+export const MobSpan = styled.div`
+  margin-left: 1rem;
+  background: var(--soft-magenta);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.875rem;
+  
+  @media(min-width: 768px){
+    display: none;
   }
 `
 
